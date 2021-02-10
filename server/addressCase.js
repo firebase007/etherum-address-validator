@@ -42,7 +42,7 @@ module.exports = {
             break;
 
         case "toUpper":
-            if (web3.utils.isAddress(address) && convertTo === "toUpper" && (address == address.toLowerCase() || address == address.toUpperCase() || web3.utils.checkAddressChecksum(address)))
+            if (web3.utils.isAddress(address) && (address == address.toLowerCase() || address == address.toUpperCase() || web3.utils.checkAddressChecksum(address)))
             {
                 // The character is uppercase
                 let upperCaseAddress = await address.toUpperCase()
@@ -56,7 +56,7 @@ module.exports = {
         break;
 
         case "toCheckSum":
-            if (web3.utils.isAddress(address) && (address == address.toUpperCase() || address == address.toLowerCase()))
+            if (web3.utils.isAddress(address) && (address == address.toUpperCase() || address == address.toLowerCase() || web3.utils.checkAddressChecksum(address)))
             
             {  
                 console.log(web3.utils.isAddress(address), '---', (address == address.toUpperCase() || address == address.toLowerCase()), '-----1')
@@ -73,6 +73,7 @@ module.exports = {
                 
             }
             else{
+                console.log('got here')
                 Response.sendErrorResponse({res, status: 'error', message: 'Not a valid address', responseBody: null  })
         
             }
@@ -80,6 +81,7 @@ module.exports = {
         break;
     
         default:
+            console.log('got here')
             Response.sendErrorResponse({res, status: 'error', message: 'Not a valid address', responseBody: null  })
             break;
     }

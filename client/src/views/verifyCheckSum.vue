@@ -72,7 +72,12 @@ export default {
       try {
         let url = `address/verify/checksum?address=${this.submit.address}`;
         let response = await this.$http.get(url);
-        console.log(response.data, "resp", response.data.message);
+        console.log(
+          response.data,
+          "resp",
+          response.data.message,
+          response.data.status
+        );
         if (response.data && response.data.status == true) {
           this.result = response.data.data;
           this.message = response.data.message;
